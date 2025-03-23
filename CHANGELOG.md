@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.2.1...v0.3.0) (2025-03-23)
+
+### Features
+
+* **semantic-release:** add semantic-release/exec plugin ([2277a88](https://github.com/xebis/github-actions-and-workflows/commit/2277a88420d7ad2f3e9717c08730d4e0e1260939))
+
 ## [0.2.1](https://github.com/xebis/github-actions-and-workflows/compare/v0.2.0...v0.2.1) (2025-03-13)
 
 ### Bug Fixes
