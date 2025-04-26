@@ -4,7 +4,7 @@ A collection of GitHub composite actions and reusable workflows.
 
 ## Features
 
-- Reusable [Semantic Release workflow](.github/workflows/semantic-release.yaml) using the Conventional Commits preset to automate versioning, generates [GitHub releases](https://github.com/xebis/github-actions-and-workflows/releases), and update the [CHANGELOG](CHANGELOG.md).  
+- Reusable [Semantic Release workflow](.github/workflows/semantic-release.yaml) using the Conventional Commits preset to automate versioning, generates [GitHub releases](https://github.com/xebis/github-actions-and-workflows/releases), updates the [CHANGELOG](CHANGELOG.md), and creates or updates major tag.  
   Use in a repository from a workflow, for example, `.github/workflows/semantic-release.yaml`:
 
   ```yaml
@@ -39,6 +39,7 @@ A collection of GitHub composite actions and reusable workflows.
     - - "@semantic-release/git"
       - assets:
         - CHANGELOG.md
+    - semantic-release-major-tag
   ```
 
 ## Credits and Acknowledgments
