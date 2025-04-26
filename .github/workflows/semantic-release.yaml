@@ -36,6 +36,7 @@ jobs:
           @semantic-release/changelog
           @semantic-release/exec
           @semantic-release/git
+          semantic-release-major-tag
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
       - name: Semantic Release
