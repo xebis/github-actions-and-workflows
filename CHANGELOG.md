@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.3.0...v0.4.0) (2025-04-27)
+
+### Features
+
+* add semantic release major tag ([3e4a4f2](https://github.com/xebis/github-actions-and-workflows/commit/3e4a4f2029f5654de4c16fb9553d194e0fe555d8))
+
 ## [0.3.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.2.1...v0.3.0) (2025-03-23)
 
 ### Features
