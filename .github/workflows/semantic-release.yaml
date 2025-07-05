@@ -24,6 +24,8 @@ jobs:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
+    env:
+      USE_GH_APP: ${{ inputs.GH_APP_ID && secrets.GH_APP_PEM_FILE }}
 
     steps:
       - name: Checkout repository
@@ -52,7 +54,7 @@ jobs:
       - name: Create GitHub App token
         uses: actions/create-github-app-token@v2
         id: gh-app-token
-        if: ${{ inputs.GH_APP_ID && secrets.GH_APP_PEM_FILE }}
+        if: env.USE_GH_APP
         with:
           app-id: ${{ inputs.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PEM_FILE }}
