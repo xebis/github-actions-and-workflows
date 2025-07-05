@@ -22,6 +22,9 @@ A collection of GitHub composite actions and reusable workflows.
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   ```
 
+  > [!note]
+  > To use GitHub App instead of GitHub token pass`inputs.GH_APP_ID` and `secrets.GH_APP_PEM_FILE` instead of `secrets.GITHUB_TOKEN`.
+
   Configure in a repository, for example, `.releaserc.yaml`:
 
   ```yaml
