@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.5.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.4.0...v0.5.0) (2025-07-05)
+
+### Features
+
+* add semantic release support for github app ([5a9c740](https://github.com/xebis/github-actions-and-workflows/commit/5a9c7405608f1928897d9298eadbabfe624abd38))
+
+### Bug Fixes
+
+* checkout should use the same token as semantic release ([ff8b902](https://github.com/xebis/github-actions-and-workflows/commit/ff8b90217ad7abae449a7eb85fbcece109d8aa82))
+* semantic release repo should use github app when configured ([e9eeeaf](https://github.com/xebis/github-actions-and-workflows/commit/e9eeeaf73ba9db1d3166e11b0251a96b18b5ccf6))
+* semantic release workflow if condition is invalid ([45e08ee](https://github.com/xebis/github-actions-and-workflows/commit/45e08eee4eeb8e67b5aeabeb64a379c0936057de))
+
 ## [0.4.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.3.0...v0.4.0) (2025-04-27)
 
 ### Features
