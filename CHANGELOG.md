@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.6.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.5.0...v0.6.0) (2025-09-21)
+
+### Features
+
+* add megalinter configuration and workflow ([e197d13](https://github.com/xebis/github-actions-and-workflows/commit/e197d13e15bc14b89b63251a8e01d6de4798b3ea))
+
 ## [0.5.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.4.0...v0.5.0) (2025-07-05)
 
 ### Features
