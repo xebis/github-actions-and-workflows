@@ -1,0 +1,69 @@
+---
+name: Sync Files
+
+on:
+  push:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repository:
+          - .github
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v5
+        with:
+          path: source
+
+      - name: Create GitHub App token
+        uses: actions/create-github-app-token@v2
+        id: gh-app-token
+        with:
+          app-id: ${{ vars.GH_APP_SEM_REL_ID }}
+          private-key: ${{ secrets.GH_APP_SEM_REL_PEM_FILE }}
+
+      - name: Checkout target repository
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ format('{0}/{1}', github.ref == 'refs/heads/main' && 'xebis' || 'xebis-test', matrix.repository) }}
+          path: target
+          token: ${{ steps.gh-app-token.outputs.token }}
+
+      - name: Copy files
+        run: |
+          yq -r '.copy[]' target/.github/sync.yaml | while IFS= read -r file; do
+            source_file="source/$file"
+            target_file="target/$file"
+            mkdir -p "$(dirname "$target_file")"
+            cp "$source_file" "$target_file"
+          done
+
+      - name: Detect sync updates
+        id: updates
+        run: |
+          if output=$(git status --porcelain) && [ -z "$output" ]; then
+            echo "updated=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+          fi
+      
+      - name: Output short commit SHA
+        if: steps.updates.outputs.updated == 'true'
+        id: sha
+        run: |
+          pushd target
+          echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          popd
+
+      - name: Create Pull Request with applied automatic fixes
+        if: steps.updates.outputs.updated == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          path: target
+          token: ${{ steps.gh-app-token.outputs.token }}
+          branch: "feature/sync-files-for-${{ steps.sha.outputs.short }}"
+          commit-message: "chore: [sync-files] sync files"
+          title: "[Sync Files] Sync Files"
+          labels: bot
