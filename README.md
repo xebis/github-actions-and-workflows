@@ -6,6 +6,7 @@ A collection of GitHub composite actions and reusable workflows.
 
 - [Reusable Megalinter Workflow](#reusable-megalinter-workflow)
 - [Reusable Semantic Release Workflow](#reusable-semantic-release-workflow)
+- [Sync Files Workflow](#sync-files-workflow)
 
 ### Reusable Megalinter Workflow
 
@@ -91,6 +92,22 @@ plugins:
       - CHANGELOG.md
   - semantic-release-major-tag
 ```
+
+### Sync Files Workflow
+
+[Sync Files Workflow](.github/workflows/sync-files.yaml) synchronizes the repository contents by creating a pull request to the target repositories.
+
+Configure target repositories:
+
+- Target repositories are specified at the source repository [Sync Files Workflow](.github/workflows/sync-files.yaml) in the matrix.
+- Files to sync are specified in the target repository file `.github/sync.yaml`:
+
+  ```yaml
+  ---
+  copy:
+  - .github/workflows/semantic-release.yaml
+  - .releaserc.yaml
+  ```
 
 ## Credits and Acknowledgments
 
