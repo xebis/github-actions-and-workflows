@@ -42,6 +42,7 @@ jobs:
 
       - name: Detect sync updates
         id: updates
+        working-directory: target
         run: |
           if output=$(git status --porcelain) && [ -z "$output" ]; then
             echo "updated=true" >> "$GITHUB_OUTPUT"
@@ -52,10 +53,9 @@ jobs:
       - name: Output short commit SHA
         if: steps.updates.outputs.updated == 'true'
         id: sha
+        working-directory: target
         run: |
-          pushd target
           echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          popd
 
       - name: Create Pull Request with applied automatic fixes
         if: steps.updates.outputs.updated == 'true'
