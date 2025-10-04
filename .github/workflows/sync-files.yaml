@@ -44,7 +44,7 @@ jobs:
         id: updates
         working-directory: target
         run: |
-          if output=$(git status --porcelain) && [ -z "$output" ]; then
+          if output=$(git status --porcelain) && [ -n "$output" ]; then
             echo "updated=true" >> "$GITHUB_OUTPUT"
           else
             echo "updated=false" >> "$GITHUB_OUTPUT"
