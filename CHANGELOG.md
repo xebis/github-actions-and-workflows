@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.6.0...v0.7.0) (2025-10-06)
+
+### Features
+
+* add sync files workflow ([c2eefc7](https://github.com/xebis/github-actions-and-workflows/commit/c2eefc73ab6e6c49ddc27c4588af6ae0563642ca))
+
+### Bug Fixes
+
+* missing parameters to create github app token ([a415dc7](https://github.com/xebis/github-actions-and-workflows/commit/a415dc7ed1b5c918b0db5a8cc171826f26d0a728))
+* sync files don't detect changed files correctly ([663bd80](https://github.com/xebis/github-actions-and-workflows/commit/663bd808fb37c92eb94a435405b0b9ac77d63b86))
+* wrong sync files working directory ([a741f2d](https://github.com/xebis/github-actions-and-workflows/commit/a741f2d41c8f25de7f5485f8b0720380675c213a))
+
 ## [0.6.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.5.0...v0.6.0) (2025-09-21)
 
 ### Features
