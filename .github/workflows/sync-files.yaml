@@ -12,11 +12,6 @@ jobs:
         repository:
           - .github
     steps:
-      - name: Checkout source repository
-        uses: actions/checkout@v5
-        with:
-          path: source
-
       - name: Create GitHub App token
         uses: actions/create-github-app-token@v2
         id: gh-app-token
@@ -33,7 +28,23 @@ jobs:
           path: target
           token: ${{ steps.gh-app-token.outputs.token }}
 
+      - name: Decide whether to sync files
+        id: decide
+        run: |
+          if [ -f target/.github/sync.yaml ]; then
+            echo "sync=true" >> $GITHUB_OUTPUT
+          else
+            echo "sync=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout source repository
+        if: steps.decide.outputs.sync == 'true'
+        uses: actions/checkout@v5
+        with:
+          path: source
+
       - name: Copy files
+        if: steps.decide.outputs.sync == 'true'
         run: |
           yq -r '.copy[]' target/.github/sync.yaml | while IFS= read -r file; do
             source_file="source/$file"
@@ -43,6 +54,7 @@ jobs:
           done
 
       - name: Detect sync updates
+        if: steps.decide.outputs.sync == 'true'
         id: updates
         working-directory: target
         run: |
@@ -53,14 +65,14 @@ jobs:
           fi
       
       - name: Output short commit SHA
-        if: steps.updates.outputs.updated == 'true'
+        if: steps.decide.outputs.sync == 'true' && steps.updates.outputs.updated == 'true'
         id: sha
         working-directory: target
         run: |
           echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request with applied automatic fixes
-        if: steps.updates.outputs.updated == 'true'
+        if: steps.decide.outputs.sync == 'true' && steps.updates.outputs.updated == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           path: target
