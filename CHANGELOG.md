@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.9.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.8.0...v0.9.0) (2025-10-09)
+
+### Features
+
+* sync files with a different source and destination path ([2136702](https://github.com/xebis/github-actions-and-workflows/commit/2136702ea16c72e40154edcffaa077bd0d1309bf))
+
 ## [0.8.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.7.0...v0.8.0) (2025-10-09)
 
 ### Features
