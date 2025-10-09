@@ -100,13 +100,14 @@ plugins:
 Configure target repositories:
 
 - Target repositories are specified at the source repository [Sync Files Workflow](.github/workflows/sync-files.yaml) in the matrix.
-- Files to sync are specified in the target repository file `.github/sync.yaml`:
+- Files to sync are specified in the target repository file `.github/sync.yaml`.
+  - `copy` section contains an array of files to copy, either in `source/file` or `source/file:destination/file` form. Destination subdirectories are created when necessary.
 
   ```yaml
   ---
   copy:
-  - .github/workflows/semantic-release.yaml
-  - .releaserc.yaml
+    - examples/workflows/semantic-release.yaml:.github/workflows/semantic-release.yaml
+    - .releaserc.yaml
   ```
 
 ## Credits and Acknowledgments

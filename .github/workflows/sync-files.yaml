@@ -47,10 +47,16 @@ jobs:
         if: steps.decide.outputs.sync == 'true'
         run: |
           yq -r '.copy[]' target/.github/sync.yaml | while IFS= read -r file; do
-            source_file="source/$file"
-            target_file="target/$file"
-            mkdir -p "$(dirname "$target_file")"
-            cp "$source_file" "$target_file"
+            if [[ "$file" == *:* ]]; then
+              IFS=':' read -r source_file destination_file <<< "$file"
+            else
+              source_file="$file"
+              destination_file="$file"
+            fi
+            source_path="source/$source_file"
+            destination_path="target/$destination_file"
+            mkdir -p "$(dirname "$destination_path")"
+            cp "$source_path" "$destination_path"
           done
 
       - name: Detect sync updates
