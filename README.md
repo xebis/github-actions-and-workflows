@@ -71,7 +71,7 @@ jobs:
 ```
 
 > [!note]
-> To use GitHub App instead of GitHub token pass`inputs.GH_APP_ID` and `secrets.GH_APP_PEM_FILE` instead of `secrets.GITHUB_TOKEN`.
+> To use GitHub App instead of GitHub token pass`inputs.GH_APP_ID` and `secrets.GH_APP_PEM_FILE` instead of `secrets.GITHUB_TOKEN`. See [`examples/workflows/semantic-release.yaml`](examples/workflows/semantic-release.yaml).
 
 Configure in a repository, for example, `.releaserc.yaml`:
 
