@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.8.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.7.0...v0.8.0) (2025-10-09)
+
+### Features
+
+* skip sync files when target sync.yaml don't exist ([2e418f8](https://github.com/xebis/github-actions-and-workflows/commit/2e418f89f548b0643fe3ea4f59d58f966b937d5e))
+
 ## [0.7.0](https://github.com/xebis/github-actions-and-workflows/compare/v0.6.0...v0.7.0) (2025-10-06)
 
 ### Features
